@@ -8,11 +8,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2023
 		Month: 7
-		Day: 18
-		Hour: 21
-		Minute: 53
-		Second: 27
-		Millisecond: 938
+		Day: 12
+		Hour: 15
+		Minute: 34
+		Second: 2
+		Millisecond: 76
 	}
 	Creator: "FBX SDK/FBX Plugins version 2020.3.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,8 +28,8 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\기타\Unity\My project01\Assets\b5b74qhm_water_station.fbx"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\기타\Unity\My project01\Assets\b5b74qhm_water_station.fbx"
+			P: "DocumentUrl", "KString", "Url", "", "C:\기타\Unity\My project01\Assets\0z71ce6t_water_station.fbx"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\기타\Unity\My project01\Assets\0z71ce6t_water_station.fbx"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", ""
 			P: "Original|ApplicationName", "KString", "", "", "Unity FBX Exporter"
@@ -75,7 +75,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2780586408944, "Scene", "Scene" {
+	Document: 1756384440464, "Scene", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -95,12 +95,12 @@ References:  {
 
 Definitions:  {
 	Version: 100
-	Count: 15
+	Count: 19
 	ObjectType: "GlobalSettings" {
 		Count: 1
 	}
 	ObjectType: "Model" {
-		Count: 6
+		Count: 10
 		PropertyTemplate: "FbxNode" {
 			Properties70:  {
 				P: "QuaternionInterpolate", "enum", "", "",0
@@ -220,7 +220,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2780583084176, "Geometry::Scene", "Mesh" {
+	Geometry: 1756386612192, "Geometry::Scene", "Mesh" {
 		Vertices: *192 {
 			a: -0,0.999999977648258,0,0.195090321358293,0.980785209685564,0,0.195090321358293,0.980785209685564,3.99999991059303,-0,0.999999977648258,3.99999991059303,0.382683449424803,0.923879444599152,0,0.382683449424803,0.923879444599152,3.99999991059303,0.555570237338543,0.831469614058733,0,0.555570237338543,0.831469614058733,3.99999991059303,0.70710675790906,0.70710675790906,0,0.70710675790906,0.70710675790906,3.99999991059303,0.831469614058733,0.555570237338543,0,0.831469614058733,0.555570237338543,3.99999991059303,0.923879444599152,0.382683426141739,0,0.923879444599152,0.382683426141739,3.99999991059303,0.980785209685564,0.195090344641358,0,0.980785209685564,0.195090344641358,3.99999991059303,0.999999977648258,-4.37113872875372e-08,0,0.999999977648258,-4.37113872875372e-08,3.99999991059303,0.980785209685564,-0.195090321358293,0,0.980785209685564,-0.195090321358293,3.99999991059303,0.923879537731409,-0.38268337957561,0,0.923879537731409,-0.38268337957561,3.99999991059303,0.831469614058733,-0.555570190772414,0,0.831469614058733,-0.555570190772414,3.99999991059303,0.70710675790906,-0.70710675790906,0,0.70710675790906,-0.70710675790906,3.99999991059303,0.555570190772414,-0.831469614058733,0,0.555570190772414,-0.831469614058733,3.99999991059303,0.382683472707868,-0.923879444599152,0,0.382683472707868,-0.923879444599152,3.99999991059303,0.195090309716761,-0.980785302817822,0,0.195090309716761,-0.980785302817822,3.99999991059303,-8.74227745750744e-08,-0.999999977648258,0,-8.74227745750744e-08,-0.999999977648258,3.99999991059303,-0.195090239867568,-0.980785302817822,0,-0.195090239867568,-0.980785302817822,3.99999991059303,-0.382683426141739,-0.923879444599152,0,-0.382683426141739,-0.923879444599152,3.99999991059303,-0.555570283904672,-0.831469520926476,0,-0.555570283904672,-0.831469520926476,3.99999991059303,-0.707106711342931,-0.707106804475188,0,-0.707106711342931,-0.707106804475188,3.99999991059303,-0.831469427794218,-0.555570423603058,0,-0.831469427794218,-0.555570423603058,3.99999991059303,-0.923879444599152,-0.382683565840125,0,
 -0.923879444599152,-0.382683565840125,3.99999991059303,-0.980785209685564,-0.195090379565954,0,-0.980785209685564,-0.195090379565954,3.99999991059303,-0.999999977648258,1.19248805274808e-08,0,-0.999999977648258,1.19248805274808e-08,3.99999991059303,-0.980785209685564,0.195090414490551,0,-0.980785209685564,0.195090414490551,3.99999991059303,-0.923879444599152,0.382683589123189,0,-0.923879444599152,0.382683589123189,3.99999991059303,-0.83146970719099,0.555570051074028,0,-0.83146970719099,0.555570051074028,3.99999991059303,-0.707106851041317,0.707106711342931,0,-0.707106851041317,0.707106711342931,3.99999991059303,-0.555570283904672,0.831469614058733,0,-0.555570283904672,0.831469614058733,3.99999991059303,-0.382683426141739,0.923879537731409,0,-0.382683426141739,0.923879537731409,3.99999991059303,-0.195090228226036,0.980785302817822,3.99999991059303,-0.195090228226036,0.980785302817822,0
@@ -322,7 +322,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2780583090896, "Geometry::Scene", "Mesh" {
+	Geometry: 1756386612640, "Geometry::Scene", "Mesh" {
 		Vertices: *69 {
 			a: -0,0,1.99999995529652,-0.999999977648258,-0.999999977648258,0.999999977648258,-0.999999977648258,0,1.99999995529652,-0,-0.999999977648258,0.999999977648258,0.999999977648258,0,1.99999995529652,0.999999977648258,-0.999999977648258,0.999999977648258,-0.999999977648258,0,0,-0.999999977648258,-0.999999977648258,0,-0,-0.999999977648258,0,-0,0,0,-0.999999977648258,0.999999977648258,0,0.999999977648258,-0.999999977648258,0,-0,0.999999977648258,0,0.999999977648258,0,0,0.999999977648258,0.999999977648258,0,-0.999999977648258,0.999999977648258,0.999999977648258,-0,0.999999977648258,1.99999995529652,-0.999999977648258,0.999999977648258,1.99999995529652,-0,0.999999977648258,0.999999977648258,0.999999977648258,0.999999977648258,1.99999995529652,0.999999977648258,0.999999977648258,0.999999977648258,0.999999977648258,0,0.999999977648258,-0.999999977648258,0,0.999999977648258
 		} 
@@ -412,7 +412,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2780583087312, "Geometry::Scene", "Mesh" {
+	Geometry: 1756386613088, "Geometry::Scene", "Mesh" {
 		Vertices: *48 {
 			a: 0.499999709427357,-0.999999977648258,-3.99999991059303,-0.500000221654773,-0.999999977648258,-3.999999538064,-0.500000221654773,-0.999999977648258,-2.49999947845936,0.499999709427357,-0.999999977648258,-2.49999985098839,-0.500000221654773,-2.49999985098839,-0.999999605119228,-0.500000221654773,-3.99999991059303,-0.999999605119228,0.499999709427357,-3.99999991059303,-1.00000007078052,0.499999709427357,-2.49999985098839,-1.00000007078052,0.499999709427357,-2.23517412911711e-08,-3.99999991059303,-0.500000221654773,-2.23518162312253e-08,-3.999999538064,0.499999709427357,-2.23517412911711e-08,-1.99999995529652,0.499999709427357,-1.99999995529652,-9.68575442072961e-08,0.499999709427357,-3.99999991059303,-9.68575442072961e-08,-0.500000221654773,-1.99999995529652,3.56129858936072e-07,-0.500000221654773,-2.23518162312253e-08,-1.99999958276749,-0.500000221654773,-3.99999991059303,3.56129858936072e-07
 		} 
@@ -502,7 +502,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2780583087760, "Geometry::Scene", "Mesh" {
+	Geometry: 1756386614880, "Geometry::Scene", "Mesh" {
 		Vertices: *24 {
 			a: -0.999999977648258,-0.999999977648258,0,-0.999999977648258,0.999999977648258,0,-0.999999977648258,0.999999977648258,1.99999995529652,-0.999999977648258,-0.999999977648258,1.99999995529652,0.999999977648258,0.999999977648258,0,0.999999977648258,0.999999977648258,1.99999995529652,0.999999977648258,-0.999999977648258,0,0.999999977648258,-0.999999977648258,1.99999995529652
 		} 
@@ -592,7 +592,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2780483018720, "Model::water_station", "Null" {
+	Model: 1757088692224, "Model::water_station", "Null" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -604,7 +604,7 @@ Objects:  {
 		Shading: Y
 		Culling: "CullingOff"
 	}
-	Model: 2780483022720, "Model::cylinder5", "Mesh" {
+	Model: 1757088694224, "Model::cylinder5__2_", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -612,14 +612,43 @@ Objects:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",46.009349822998,423.452758789062,-288.540554046631
+			P: "Lcl Translation", "Lcl Translation", "", "A",30.0093472003937,444.45276260376,-277.54054069519
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",4,4,4
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 1757088700224, "Model::cylinder5__1_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",30.0093472003937,423.452758789062,-288.540554046631
 			P: "Lcl Rotation", "Lcl Rotation", "", "A",-89.980224609375,0,0
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",15,15,7
 		}
 		Shading: W
 		Culling: "CullingOff"
 	}
-	Model: 2780483024720, "Model::cube9", "Mesh" {
+	Model: 1757088696224, "Model::cylinder5", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",62.0093464851379,423.452758789062,-288.540554046631
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-89.980224609375,0,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",15,15,7
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 1756398124176, "Model::cube9", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -629,12 +658,12 @@ Objects:  {
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",46.009349822998,458.452749252319,-253.540563583374
 			P: "Lcl Rotation", "Lcl Rotation", "", "A",-89.980224609375,0,0
-			P: "Lcl Scaling", "Lcl Scaling", "", "A",18,9,5
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",28,9,5
 		}
 		Shading: W
 		Culling: "CullingOff"
 	}
-	Model: 2780483028720, "Model::wall_corner4__1_", "Mesh" {
+	Model: 1756398128176, "Model::wall_corner4__1_", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -648,7 +677,21 @@ Objects:  {
 		Shading: W
 		Culling: "CullingOff"
 	}
-	Model: 2780485400096, "Model::cube", "Mesh" {
+	Model: 1756398132176, "Model::wall_corner4", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",66.0093486309052,453.452777862549,-216.540551185608
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",7,9,7
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 1756398130176, "Model::cube", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -657,12 +700,12 @@ Objects:  {
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",46.009349822998,439.452743530273,-263.540554046631
-			P: "Lcl Scaling", "Lcl Scaling", "", "A",20,20,10
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",30,20,10
 		}
 		Shading: W
 		Culling: "CullingOff"
 	}
-	Model: 2780485386096, "Model::cylinder5__3_", "Mesh" {
+	Model: 1756398134176, "Model::cylinder5__3_", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationOrder", "enum", "", "",4
@@ -670,13 +713,27 @@ Objects:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",46.009349822998,444.45276260376,-277.54054069519
+			P: "Lcl Translation", "Lcl Translation", "", "A",62.0093464851379,444.45276260376,-277.54054069519
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",4,4,4
 		}
 		Shading: W
 		Culling: "CullingOff"
 	}
-	Material: 2780582314656, "Material::Material", "" {
+	Model: 1756398120176, "Model::wall_corner4__2_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",26.0093510150909,453.452777862549,-216.540551185608
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",7,9,7
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Material: 1756395612640, "Material::Material", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
@@ -689,7 +746,7 @@ Objects:  {
 			P: "Opacity", "double", "Number", "",1
 		}
 	}
-	Material: 2780582309056, "Material::Material_1", "" {
+	Material: 1756395613440, "Material::Material_1", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
@@ -702,7 +759,7 @@ Objects:  {
 			P: "Opacity", "double", "Number", "",1
 		}
 	}
-	Material: 2780582308656, "Material::Material_2", "" {
+	Material: 1756395614640, "Material::Material_2", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
@@ -715,7 +772,7 @@ Objects:  {
 			P: "Opacity", "double", "Number", "",1
 		}
 	}
-	Material: 2780582612272, "Material::Material_3", "" {
+	Material: 1756395632240, "Material::Material_3", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
@@ -736,52 +793,88 @@ Objects:  {
 Connections:  {
 	
 	;Model::water_station, Model::RootNode
-	C: "OO",2780483018720,0
+	C: "OO",1757088692224,0
+	
+	;Model::cylinder5__2_, Model::water_station
+	C: "OO",1757088694224,1757088692224
+	
+	;Model::cylinder5__1_, Model::water_station
+	C: "OO",1757088700224,1757088692224
 	
 	;Model::cylinder5, Model::water_station
-	C: "OO",2780483022720,2780483018720
+	C: "OO",1757088696224,1757088692224
 	
 	;Model::cube9, Model::water_station
-	C: "OO",2780483024720,2780483018720
+	C: "OO",1756398124176,1757088692224
 	
 	;Model::wall_corner4__1_, Model::water_station
-	C: "OO",2780483028720,2780483018720
+	C: "OO",1756398128176,1757088692224
+	
+	;Model::wall_corner4, Model::water_station
+	C: "OO",1756398132176,1757088692224
 	
 	;Model::cube, Model::water_station
-	C: "OO",2780485400096,2780483018720
+	C: "OO",1756398130176,1757088692224
 	
 	;Model::cylinder5__3_, Model::water_station
-	C: "OO",2780485386096,2780483018720
+	C: "OO",1756398134176,1757088692224
+	
+	;Model::wall_corner4__2_, Model::water_station
+	C: "OO",1756398120176,1757088692224
+	
+	;Material::Material, Model::cylinder5__2_
+	C: "OO",1756395612640,1757088694224
+	
+	;Geometry::Scene, Model::cylinder5__2_
+	C: "OO",1756386612192,1757088694224
+	
+	;Material::Material, Model::cylinder5__1_
+	C: "OO",1756395612640,1757088700224
+	
+	;Geometry::Scene, Model::cylinder5__1_
+	C: "OO",1756386612192,1757088700224
 	
 	;Material::Material, Model::cylinder5
-	C: "OO",2780582314656,2780483022720
+	C: "OO",1756395612640,1757088696224
 	
 	;Geometry::Scene, Model::cylinder5
-	C: "OO",2780583084176,2780483022720
+	C: "OO",1756386612192,1757088696224
 	
 	;Material::Material_1, Model::cube9
-	C: "OO",2780582309056,2780483024720
+	C: "OO",1756395613440,1756398124176
 	
 	;Geometry::Scene, Model::cube9
-	C: "OO",2780583090896,2780483024720
+	C: "OO",1756386612640,1756398124176
 	
 	;Material::Material_2, Model::wall_corner4__1_
-	C: "OO",2780582308656,2780483028720
+	C: "OO",1756395614640,1756398128176
 	
 	;Geometry::Scene, Model::wall_corner4__1_
-	C: "OO",2780583087312,2780483028720
+	C: "OO",1756386613088,1756398128176
+	
+	;Material::Material_2, Model::wall_corner4
+	C: "OO",1756395614640,1756398132176
+	
+	;Geometry::Scene, Model::wall_corner4
+	C: "OO",1756386613088,1756398132176
 	
 	;Material::Material_3, Model::cube
-	C: "OO",2780582612272,2780485400096
+	C: "OO",1756395632240,1756398130176
 	
 	;Geometry::Scene, Model::cube
-	C: "OO",2780583087760,2780485400096
+	C: "OO",1756386614880,1756398130176
 	
 	;Material::Material, Model::cylinder5__3_
-	C: "OO",2780582314656,2780485386096
+	C: "OO",1756395612640,1756398134176
 	
 	;Geometry::Scene, Model::cylinder5__3_
-	C: "OO",2780583084176,2780485386096
+	C: "OO",1756386612192,1756398134176
+	
+	;Material::Material_2, Model::wall_corner4__2_
+	C: "OO",1756395614640,1756398120176
+	
+	;Geometry::Scene, Model::wall_corner4__2_
+	C: "OO",1756386613088,1756398120176
 }
 ;Takes section
 ;----------------------------------------------------

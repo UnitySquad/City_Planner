@@ -25,6 +25,10 @@ public class CraftManager : MonoBehaviour
 
     void add_bulding(int location_x, int location_y, string building_type, string building_name)
     {
+        if (this.map[location_x + location_y * 30].ContainsKey("road") && building_type == "building")
+        {
+            return;
+        }
         if (location_x <= opened_map_size && location_y <= opened_map_size)
         {
             this.map[location_x + location_y * 30].Add(building_type, building_name);
@@ -51,13 +55,13 @@ public class CraftManager : MonoBehaviour
     {
         if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv1"))
         {
-            remove_bulding(location_x, location_y, "water");
-            add_bulding(location_x, location_y, "water", "water_station_lv2");
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "water_station_lv2");
         }
         else if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv2"))
         {
-            remove_bulding(location_x, location_y, "water");
-            add_bulding(location_x, location_y, "water", "water_station_lv2");
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "water_station_lv3");
         }
         else
         {

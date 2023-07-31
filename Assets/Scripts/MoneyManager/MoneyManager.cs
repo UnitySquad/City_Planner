@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MoneyManager : MonoBehaviour
 {
     public Text money_text;
+    public Text[] coin_name_text = new Text[5];     //보여주는 이름
     public Text[] coin_value_text = new Text[5];    //보여주는 돈
     public Text[] coin_per_text = new Text[5];      //보여주는 퍼센트
     public Text[] coin_count_text = new Text[5];    //보여주는 코인 개수
@@ -14,31 +15,40 @@ public class MoneyManager : MonoBehaviour
     int rn_updown;  //랜덤 증감 상수
     int rn_per;     //랜덤 퍼센트 상수
 
+    List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사"};
+
     public class coin
     {
         public int coin_value;
         public int coin_count;
+        public string coin_name;
 
-        public coin(int coin_value, int coin_count)
+        public coin(int coin_value, int coin_count, string coin_name)
         {
             this.coin_value = coin_value;   //코인 가격
             this.coin_count = coin_count;   //코인 개수
+            this.coin_name = coin_name;     //코인 이름
         }
     }
 
     coin[] coins = new coin[]
     {
-        new coin(5000,0),
-        new coin(5000,0),
-        new coin(5000,0),
-        new coin(5000,0),
-        new coin(5000,0)
+        new coin(5000,0,"없"),
+        new coin(5000,0,"없"),
+        new coin(5000,0,"없"),
+        new coin(5000,0,"없"),
+        new coin(5000,0,"없")
     };
 
     void Start()
     {
         money = 50000000;
         money_update();
+        change_coin(0);
+        change_coin(1);
+        change_coin(2);
+        change_coin(3);
+        change_coin(4);
     }
 
     void money_update()  //UI에 글자를 현재 돈으로 수정
@@ -69,7 +79,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void buy_coin(int coin_num)
+    public void buy_coin(int coin_num)  //코인을 산다
     {
         if(money>=coins[coin_num].coin_value)
         {
@@ -80,7 +90,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void sell_coin(int coin_num)
+    public void sell_coin(int coin_num) //코인을 판다
     {
         if(coins[coin_num].coin_count>0)
         {
@@ -89,5 +99,13 @@ public class MoneyManager : MonoBehaviour
             money += coins[coin_num].coin_value;
             money_update();
         }
+    }
+
+    public void change_coin(int coin_num)   //이름을 랜덤으로 리셋
+    {
+        int tmp_name = Random.Range(0, coin_name_list.Count);
+        coins[coin_num].coin_name = coin_name_list[tmp_name];
+        coin_name_text[coin_num].text = coins[coin_num].coin_name;
+        coin_name_list.RemoveAt(tmp_name);
     }
 }

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class MoneyManager : MonoBehaviour
 {
     public Text money_text;
-    public Text[] coin_text = new Text[5];
+    public Text[] coin_value_text = new Text[5];    //ë³´ì—¬ì£¼ëŠ” ëˆ
+    public Text[] coin_per_text = new Text[5];      //ë³´ì—¬ì£¼ëŠ” í¼ì„¼íŠ¸
+    public Text[] coin_count_text = new Text[5];    //ë³´ì—¬ì£¼ëŠ” ì½”ì¸ ê°œìˆ˜
 
-    int money;  //µ·
-    int rn_updown;  //·£´ı Áõ°¨ »ó¼ö
-    int rn_per;     //·£´ı ÆÛ¼¾Æ® »ó¼ö
+    int money;  //ëˆ
+    int rn_updown;  //ëœë¤ ì¦ê° ìƒìˆ˜
+    int rn_per;     //ëœë¤ í¼ì„¼íŠ¸ ìƒìˆ˜
 
     public class coin
     {
@@ -19,8 +21,8 @@ public class MoneyManager : MonoBehaviour
 
         public coin(int coin_value, int coin_count)
         {
-            this.coin_value = coin_value;   //ÄÚÀÎ °¡°İ
-            this.coin_count = coin_count;   //ÄÚÀÎ °¹¼ö
+            this.coin_value = coin_value;   //ì½”ì¸ ê°€ê²©
+            this.coin_count = coin_count;   //ì½”ì¸ ê°œìˆ˜
         }
     }
 
@@ -35,33 +37,57 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
-        money = 5000;
+        money = 50000000;
         money_update();
     }
 
-    void money_update()  //UI¿¡ ±ÛÀÚ¸¦ ÇöÀç µ·À¸·Î ¼öÁ¤
+    void money_update()  //UIì— ê¸€ìë¥¼ í˜„ì¬ ëˆìœ¼ë¡œ ìˆ˜ì •
     {
-        money_text.text = "µ· : " + money.ToString();
+        money_text.text = "ëˆ : " + money.ToString();
     }
 
-    public void random_coin()   //ÄÚÀÎÀÌ ·£´ıÇÏ°Ô Áõ°¨
+    public void random_coin()   //ì½”ì¸ì´ ëœë¤í•˜ê²Œ ì¦ê°
     {
         for(int i=0;i<5;i++)
         {
-            rn_updown = Random.Range(1, 3);  //1ºÎÅÍ 2±îÁö
+            rn_updown = Random.Range(1, 3);  //1ë¶€í„° 2ê¹Œì§€
 
-            if(rn_updown==1) //ÇÏ¶ôÇßÀ» °æ¿ì
+            if(rn_updown==1) //í•˜ë½í–ˆì„ ê²½ìš°
             {
-                rn_per = Random.Range(1, 101); //1ºÎÅÍ 100±îÁö
+                rn_per = Random.Range(1, 101); //1ë¶€í„° 100ê¹Œì§€
                 coins[i].coin_value = coins[i].coin_value * (100 - rn_per) / 100;
-                coin_text[i].text = coins[i].coin_value + "\n\n" + "-" + rn_per.ToString() + "%";
+                coin_value_text[i].text = coins[i].coin_value.ToString();
+                coin_per_text[i].text = "-" + rn_per.ToString() + "%";
             }
-            else  //Áõ°¡ÇßÀ» °æ¿ì
+            else  //ì¦ê°€í–ˆì„ ê²½ìš°
             {
-                rn_per = Random.Range(1, 1001); //1ºÎÅÍ 1000±îÁö
+                rn_per = Random.Range(1, 1001); //1ë¶€í„° 1000ê¹Œì§€
                 coins[i].coin_value = coins[i].coin_value * rn_per / 100;
-                coin_text[i].text = coins[i].coin_value + "\n\n" + rn_per.ToString() + "%";
+                coin_value_text[i].text = coins[i].coin_value.ToString();
+                coin_per_text[i].text = rn_per.ToString() + "%";
             }
+        }
+    }
+
+    public void buy_coin(int coin_num)
+    {
+        if(money>=coins[coin_num].coin_value)
+        {
+            money -= coins[coin_num].coin_value;
+            money_update();
+            coins[coin_num].coin_count++;
+            coin_count_text[coin_num].text = coins[coin_num].coin_count.ToString();
+        }
+    }
+
+    public void sell_coin(int coin_num)
+    {
+        if(coins[coin_num].coin_count>0)
+        {
+            coins[coin_num].coin_count--;
+            coin_count_text[coin_num].text = coins[coin_num].coin_count.ToString();
+            money += coins[coin_num].coin_value;
+            money_update();
         }
     }
 }

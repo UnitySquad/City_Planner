@@ -53,6 +53,7 @@ public class CraftManager : MonoBehaviour
 
     void upgrade_building(int location_x, int location_y)
     {
+        // upgrade water_station
         if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv1"))
         {
             remove_bulding(location_x, location_y, "building");
@@ -63,9 +64,59 @@ public class CraftManager : MonoBehaviour
             remove_bulding(location_x, location_y, "building");
             add_bulding(location_x, location_y, "building", "water_station_lv3");
         }
+
+        // upgrade house
+        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv1"))
+        {
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "house_lv2");
+        }
+        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv2"))
+        {
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "house_lv3");
+        }
+
+        // upgrade factory
+        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv1"))
+        {
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "factory_lv2");
+        }
+        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv2"))
+        {
+            remove_bulding(location_x, location_y, "building");
+            add_bulding(location_x, location_y, "building", "factory_lv3");
+        }
+
+        // upgrade nothing
         else
         {
             return;
+        }
+    }
+
+    void set_tile(int location_x, int location_y, string tile_type)
+    {
+        if (this.map[location_x + location_y * 30].ContainsKey("tile"))
+        {
+            this.map[location_x + location_y * 30].Remove("tile");
+        }
+        this.map[location_x + location_y * 30].Add("tile", tile_type);
+    }
+
+    void create_map()
+    {
+        for (int i = 0; i < this.map.Count; i++)
+        {
+            if (13 <= (i % 30) || (i % 30) <= 16 || 270 <= (i % 899) || (i % 900) <= 359)
+            {
+                set_tile(i % 30, i / 30, "water");
+            }
+            else
+            {
+                set_tile(i % 30, i / 30, "ground");
+            }
         }
     }
 

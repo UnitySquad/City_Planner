@@ -15,6 +15,10 @@ public class CameraControl : MonoBehaviour
 
     public Vector3 newPosition;
 
+    // 범위를 지정하는 변수들 (public으로 선언하여 Inspector에서 값을 수정할 수 있도록 함)
+    public Vector3 minBound = new Vector3(-163f, 38f, 14f);
+    public Vector3 maxBound = new Vector3(-127f, 58f, 71f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,11 @@ public class CameraControl : MonoBehaviour
         {
             Camera.main.transform.position = Origin - Difference;
             newPosition = Origin - Difference;
+
+            // 범위를 벗어나지 못하도록 제한
+            newPosition.x = Mathf.Clamp(newPosition.x, minBound.x, maxBound.x);
+            newPosition.y = Mathf.Clamp(newPosition.y, minBound.y, maxBound.y);
+            newPosition.z = Mathf.Clamp(newPosition.z, minBound.z, maxBound.z);
         }
 
         if(Input.GetKey(KeyCode.F1))
@@ -68,6 +77,11 @@ public class CameraControl : MonoBehaviour
         {
             newPosition += (transform.right * -movementSpeed);
         }
+
+        // 범위를 벗어나지 못하도록 다시 한번 제한
+        newPosition.x = Mathf.Clamp(newPosition.x, minBound.x, maxBound.x);
+        newPosition.y = Mathf.Clamp(newPosition.y, minBound.y, maxBound.y);
+        newPosition.z = Mathf.Clamp(newPosition.z, minBound.z, maxBound.z);
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
     }

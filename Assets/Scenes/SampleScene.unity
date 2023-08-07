@@ -3665,6 +3665,8 @@ MonoBehaviour:
   movementSpeed: 0.2
   movementTime: 5
   newPosition: {x: -148, y: 25, z: 31}
+  minBound: {x: -175, y: 25, z: -3}
+  maxBound: {x: -127, y: 60, z: 73}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ public class MoneyManager : MonoBehaviour
     int rn_updown;  //랜덤 증감 상수
     int rn_per;     //랜덤 퍼센트 상수
 
-    List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사"};
+    List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사",
+    "바보","석류","레드","블루","그린","육성","오성","사성","이성","일성","리얼","폭스","래빗"};
 
     public class coin
     {
@@ -62,7 +63,14 @@ public class MoneyManager : MonoBehaviour
         {
             rn_updown = Random.Range(1, 3);  //1부터 2까지
 
-            if(rn_updown==1) //하락했을 경우
+            if(coins[i].coin_value == 0)
+            {
+                coins[i].coin_value = 5000;
+                coin_value_text[i].text = coins[i].coin_value.ToString();
+                change_coin(i);
+                coin_per_text[i].text = "0%";
+            }
+            else if(rn_updown==1) //하락했을 경우
             {
                 rn_per = Random.Range(1, 101); //1부터 100까지
                 coins[i].coin_value = coins[i].coin_value * (100 - rn_per) / 100;
@@ -71,17 +79,25 @@ public class MoneyManager : MonoBehaviour
             }
             else  //증가했을 경우
             {
-                rn_per = Random.Range(1, 1001); //1부터 1000까지
+                rn_per = Random.Range(1, 301); //1부터 300까지
                 coins[i].coin_value = coins[i].coin_value * rn_per / 100;
                 coin_value_text[i].text = coins[i].coin_value.ToString();
                 coin_per_text[i].text = rn_per.ToString() + "%";
+            }
+
+            if(coins[i].coin_value <= 100)  //상장 폐지
+            {
+                coins[i].coin_value = 0;
+                coin_value_text[i].text = coins[i].coin_value.ToString();
+                coins[i].coin_count = 0;
+                coin_count_text[i].text = coins[i].coin_value.ToString();
             }
         }
     }
 
     public void buy_coin(int coin_num)  //코인을 산다
     {
-        if(money>=coins[coin_num].coin_value)
+        if(money>=coins[coin_num].coin_value && coins[coin_num].coin_value != 0)
         {
             money -= coins[coin_num].coin_value;
             money_update();

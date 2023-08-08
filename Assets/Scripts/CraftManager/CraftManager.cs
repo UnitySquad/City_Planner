@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
-// max_map_size : 900(30*30)
-// index_of_map_size : (0 ~ 29) * (0 ~ 29) - 0 ~ 899
 
 public class CraftManager : MonoBehaviour
 {
-    List<Dictionary<string, string>> map = new List<Dictionary<string, string>>(new Dictionary<string, string>[900]);
+    public const int max_map_size = 899;
+    List<Dictionary<string, string>> map = new List<Dictionary<string, string>>(new Dictionary<string, string>[max_map_size + 1]);
     int opened_map_size = 9;
 
     // Start is called before the first frame update
@@ -107,17 +106,19 @@ public class CraftManager : MonoBehaviour
 
     void create_map()
     {
+        // map1
         for (int i = 0; i < this.map.Count; i++)
         {
-            if (13 <= (i % 30) || (i % 30) <= 16 || 270 <= (i % 899) || (i % 900) <= 359)
+            if (13 <= (i % 30) || (i % 30) <= 16 || 270 <= (i % max_map_size) || (i % max_map_size + 1) <= 359)
             {
-                set_tile(i % 30, i / 30, "water");
+                set_tile(i % 30, i / 30, "river");
             }
             else
             {
                 set_tile(i % 30, i / 30, "ground");
             }
         }
+        this.map[124].Add("building", "house_lv1");
     }
 
     void extend_map()
@@ -145,5 +146,103 @@ public class CraftManager : MonoBehaviour
         {
             this.map[i].Clear();
         }
+    }
+
+    void update_state(int location_x, int location_y)
+    {
+        if(check_around(location_x, location_y, "elctric"))
+        {
+            this.map[location_x + (location_y * 30)].Add("electric", "");
+        }
+        else
+        {
+            this.map[location_x + (location_y * 30)].Remove("electric");
+        }
+        if (check_around(location_x, location_y, "water"))
+        {
+            this.map[location_x + (location_y * 30)].Add("water", "");
+        }
+        else
+        {
+            this.map[location_x + (location_y * 30)].Remove("water");
+        }
+    }
+
+    bool check_around(int location_x, int location_y, string type)
+    {
+        if (location_x >= 29 && location_y >= 29)
+        {
+            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_x <= 0 && location_y >= 29)
+        {
+            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_x >= 29 && location_y <= 0)
+        {
+            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_x <= 0 && location_y <= 0)
+        {
+            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_x >= 29)
+        {
+            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_y >= 29)
+        {
+            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_x <= 0)
+        {
+            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else if (location_y <= 0)
+        {
+            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else 
+            return false;
     }
 }

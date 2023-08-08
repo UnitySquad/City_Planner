@@ -22,15 +22,15 @@ public class CraftManager : MonoBehaviour
 
     }
 
-    void add_bulding(int location_x, int location_y, string building_type, string building_name)
+    void add_bulding(int x, int y, string building_type, string building_name)
     {
-        if (this.map[location_x + location_y * 30].ContainsKey("road") && building_type == "building")
+        if (this.map[x + (y * 30)].ContainsKey("road") && building_type == "building")
         {
             return;
         }
-        if (location_x <= opened_map_size && location_y <= opened_map_size)
+        if (x <= opened_map_size && y <= opened_map_size)
         {
-            this.map[location_x + location_y * 30].Add(building_type, building_name);
+            this.map[x + (y * 30)].Add(building_type, building_name);
         }
         else
         {
@@ -38,11 +38,11 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void remove_bulding(int location_x, int location_y, string building_type)
+    void remove_bulding(int x, int y, string building_type)
     {
-        if (location_x <= opened_map_size && location_y <= opened_map_size)
+        if (x <= opened_map_size && y <= opened_map_size)
         {
-            this.map[location_x + location_y * 30].Remove(building_type);
+            this.map[x + (y * 30)].Remove(building_type);
         }
         else
         {
@@ -50,42 +50,42 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void upgrade_building(int location_x, int location_y)
+    void upgrade_building(int x, int y)
     {
         // upgrade water_station
-        if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv1"))
+        if (this.map[x + (y * 30)].ContainsValue("water_station_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "water_station_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "water_station_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("water_station_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "water_station_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "water_station_lv3");
         }
 
         // upgrade house
-        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv1"))
+        else if (this.map[x + (y * 30)].ContainsValue("house_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "house_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "house_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("house_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "house_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "house_lv3");
         }
 
         // upgrade factory
-        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv1"))
+        else if (this.map[x + (y * 30)].ContainsValue("factory_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "factory_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "factory_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("factory_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "factory_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "factory_lv3");
         }
 
         // upgrade nothing
@@ -95,13 +95,13 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void set_tile(int location_x, int location_y, string tile_type)
+    void set_tile(int x, int y, string tile_type)
     {
-        if (this.map[location_x + location_y * 30].ContainsKey("tile"))
+        if (this.map[x + (y * 30)].ContainsKey("tile"))
         {
-            this.map[location_x + location_y * 30].Remove("tile");
+            this.map[x + (y * 30)].Remove("tile");
         }
-        this.map[location_x + location_y * 30].Add("tile", tile_type);
+        this.map[x + (y * 30)].Add("tile", tile_type);
     }
 
     void create_map()
@@ -148,101 +148,138 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void update_state(int location_x, int location_y)
+    void update_state(int x, int y)
     {
-        if(check_around(location_x, location_y, "elctric"))
+        int tmp;
+
+        // check electric
+        if ((tmp = check_around(x, y, "elctric")) != -1)
         {
-            this.map[location_x + (location_y * 30)].Add("electric", "");
+            this.map[x + (y * 30)].Add("electric", this.map[tmp]["electric"] + 1);
         }
         else
         {
-            this.map[location_x + (location_y * 30)].Remove("electric");
+            this.map[x + (y * 30)].Remove("electric");
         }
-        if (check_around(location_x, location_y, "water"))
+
+        // check water
+        if ((tmp = check_around(x, y, "water")) != -1)
         {
-            this.map[location_x + (location_y * 30)].Add("water", "");
+            this.map[x + (y * 30)].Add("water", this.map[tmp]["water"] + 1);
         }
         else
         {
-            this.map[location_x + (location_y * 30)].Remove("water");
+            this.map[x + (y * 30)].Remove("water");
         }
     }
 
-    bool check_around(int location_x, int location_y, string type)
+    int check_around(int x, int y, string type)
     {
-        if (location_x >= 29 && location_y >= 29)
+        if (x >= 29 && y >= 29)
         {
-            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            if (this.map[x + (y * 30) - 1].ContainsKey(type) || this.map[x + (y * 30) - 30].ContainsKey(type))
             {
-                return true;
+                return 899;
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_x <= 0 && location_y >= 29)
+        else if (x <= 0 && y >= 29)
         {
-            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            if (this.map[x + (y * 30) + 1].ContainsKey(type) || this.map[x + (y * 30) - 30].ContainsKey(type))
             {
-                return true;
+                return 870;
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_x >= 29 && location_y <= 0)
+        else if (x >= 29 && y <= 0)
         {
-            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            if (this.map[x + (y * 30) - 1].ContainsKey(type) || this.map[x + (y * 30) + 30].ContainsKey(type))
             {
-                return true;
+                return 29;
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_x <= 0 && location_y <= 0)
+        else if (x <= 0 && y <= 0)
         {
-            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            if (this.map[x + (y * 30) + 1].ContainsKey(type) || this.map[x + (y * 30) + 30].ContainsKey(type))
             {
-                return true;
+                return 0;
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_x >= 29)
+        else if (x >= 29)
         {
-            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
             {
-                return true;
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_y >= 29)
+        else if (y >= 29)
         {
-            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type))
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
             {
-                return true;
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 1].ContainsKey(type))
+            {
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_x <= 0)
+        else if (x <= 0)
         {
-            if (this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) - 30].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            if (this.map[x + (y * 30) + 1].ContainsKey(type))
             {
-                return true;
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
             }
             else
-                return false;
+                return -1;
         }
-        else if (location_y <= 0)
+        else if (y <= 0)
         {
-            if (this.map[location_x + (location_y * 30) - 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 1].ContainsKey(type) || this.map[location_x + (location_y * 30) + 30].ContainsKey(type))
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
             {
-                return true;
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 1].ContainsKey(type))
+            {
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
             }
             else
-                return false;
+                return -1;
         }
-        else 
-            return false;
+        else
+            return -1;
     }
 }

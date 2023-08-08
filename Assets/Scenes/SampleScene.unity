@@ -759,6 +759,7 @@ MonoBehaviour:
   - {fileID: 545365686}
   - {fileID: 2110935214}
   - {fileID: 1602983465}
+  time_text: {fileID: 1022138860}
 --- !u!114 &206893657
 MonoBehaviour:
   m_ObjectHideFlags: 0

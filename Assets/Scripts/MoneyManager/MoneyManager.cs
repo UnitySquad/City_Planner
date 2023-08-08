@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
-    public Text money_text;
-    public Text[] coin_name_text = new Text[5];     //보여주는 이름
-    public Text[] coin_value_text = new Text[5];    //보여주는 돈
-    public Text[] coin_per_text = new Text[5];      //보여주는 퍼센트
+    public Text money_text; //보이는 돈
+    public Text[] coin_name_text = new Text[5];     //보여주는 코인 이름
+    public Text[] coin_value_text = new Text[5];    //보여주는 코인 가격
+    public Text[] coin_per_text = new Text[5];      //보여주는 코인 증감
     public Text[] coin_count_text = new Text[5];    //보여주는 코인 개수
+    public Text time_text;  //보이는 시간
 
     int money;  //돈
     int rn_updown;  //랜덤 증감 상수
     int rn_per;     //랜덤 퍼센트 상수
+
+    private float time = 0f;    //시간
+    private float coin_time = 0f;    //코인 시간
 
     List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사",
     "바보","석류","레드","블루","그린","육성","오성","사성","이성","일성","리얼","폭스","래빗"};
@@ -50,6 +54,19 @@ public class MoneyManager : MonoBehaviour
         change_coin(2);
         change_coin(3);
         change_coin(4);
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        coin_time += Time.deltaTime;
+        time_text.text = "Time : " + Mathf.Ceil(time).ToString();
+
+        if (coin_time > 10.0f)
+        {
+            random_coin();
+            coin_time = 0f;
+        }
     }
 
     void money_update()  //UI에 글자를 현재 돈으로 수정
@@ -123,5 +140,10 @@ public class MoneyManager : MonoBehaviour
         coins[coin_num].coin_name = coin_name_list[tmp_name];
         coin_name_text[coin_num].text = coins[coin_num].coin_name;
         coin_name_list.RemoveAt(tmp_name);
+    }
+
+    public void buy_building(string building_name)  //빌딩 사는 것
+    {
+
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inherence: shop
   BuildDataName: "\uC0C1\uAC00"
-  BuildDataDes: 
+  BuildDataDes: "\uC0C1\uAC00"
   BuildDataSprite: {fileID: 0}

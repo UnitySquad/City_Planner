@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
-// max_map_size : 900(30*30)
-// index_of_map_size : (0 ~ 29) * (0 ~ 29) - 0 ~ 899
 
 public class CraftManager : MonoBehaviour
 {
-    List<Dictionary<string, string>> map = new List<Dictionary<string, string>>(new Dictionary<string, string>[900]);
+    public const int max_map_size = 899;
+    List<Dictionary<string, string>> map = new List<Dictionary<string, string>>(new Dictionary<string, string>[max_map_size + 1]);
     int opened_map_size = 9;
 
     // Start is called before the first frame update
@@ -23,15 +22,15 @@ public class CraftManager : MonoBehaviour
 
     }
 
-    void add_bulding(int location_x, int location_y, string building_type, string building_name)
+    void add_bulding(int x, int y, string building_type, string building_name)
     {
-        if (this.map[location_x + location_y * 30].ContainsKey("road") && building_type == "building")
+        if (this.map[x + (y * 30)].ContainsKey("road") && building_type == "building")
         {
             return;
         }
-        if (location_x <= opened_map_size && location_y <= opened_map_size)
+        if (x <= opened_map_size && y <= opened_map_size)
         {
-            this.map[location_x + location_y * 30].Add(building_type, building_name);
+            this.map[x + (y * 30)].Add(building_type, building_name);
         }
         else
         {
@@ -39,11 +38,11 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void remove_bulding(int location_x, int location_y, string building_type)
+    void remove_bulding(int x, int y, string building_type)
     {
-        if (location_x <= opened_map_size && location_y <= opened_map_size)
+        if (x <= opened_map_size && y <= opened_map_size)
         {
-            this.map[location_x + location_y * 30].Remove(building_type);
+            this.map[x + (y * 30)].Remove(building_type);
         }
         else
         {
@@ -51,42 +50,42 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void upgrade_building(int location_x, int location_y)
+    void upgrade_building(int x, int y)
     {
         // upgrade water_station
-        if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv1"))
+        if (this.map[x + (y * 30)].ContainsValue("water_station_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "water_station_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "water_station_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("water_station_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("water_station_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "water_station_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "water_station_lv3");
         }
 
         // upgrade house
-        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv1"))
+        else if (this.map[x + (y * 30)].ContainsValue("house_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "house_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "house_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("house_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("house_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "house_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "house_lv3");
         }
 
         // upgrade factory
-        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv1"))
+        else if (this.map[x + (y * 30)].ContainsValue("factory_lv1"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "factory_lv2");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "factory_lv2");
         }
-        else if (this.map[location_x + location_y * 30].ContainsValue("factory_lv2"))
+        else if (this.map[x + (y * 30)].ContainsValue("factory_lv2"))
         {
-            remove_bulding(location_x, location_y, "building");
-            add_bulding(location_x, location_y, "building", "factory_lv3");
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "factory_lv3");
         }
 
         // upgrade nothing
@@ -96,28 +95,30 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    void set_tile(int location_x, int location_y, string tile_type)
+    void set_tile(int x, int y, string tile_type)
     {
-        if (this.map[location_x + location_y * 30].ContainsKey("tile"))
+        if (this.map[x + (y * 30)].ContainsKey("tile"))
         {
-            this.map[location_x + location_y * 30].Remove("tile");
+            this.map[x + (y * 30)].Remove("tile");
         }
-        this.map[location_x + location_y * 30].Add("tile", tile_type);
+        this.map[x + (y * 30)].Add("tile", tile_type);
     }
 
     void create_map()
     {
+        // map1
         for (int i = 0; i < this.map.Count; i++)
         {
-            if (13 <= (i % 30) || (i % 30) <= 16 || 270 <= (i % 899) || (i % 900) <= 359)
+            if (13 <= (i % 30) || (i % 30) <= 16 || 270 <= (i % max_map_size) || (i % max_map_size + 1) <= 359)
             {
-                set_tile(i % 30, i / 30, "water");
+                set_tile(i % 30, i / 30, "river");
             }
             else
             {
                 set_tile(i % 30, i / 30, "ground");
             }
         }
+        this.map[124].Add("building", "house_lv1");
     }
 
     void extend_map()
@@ -145,5 +146,140 @@ public class CraftManager : MonoBehaviour
         {
             this.map[i].Clear();
         }
+    }
+
+    void update_state(int x, int y)
+    {
+        int tmp;
+
+        // check electric
+        if ((tmp = check_around(x, y, "elctric")) != -1)
+        {
+            this.map[x + (y * 30)].Add("electric", this.map[tmp]["electric"] + 1);
+        }
+        else
+        {
+            this.map[x + (y * 30)].Remove("electric");
+        }
+
+        // check water
+        if ((tmp = check_around(x, y, "water")) != -1)
+        {
+            this.map[x + (y * 30)].Add("water", this.map[tmp]["water"] + 1);
+        }
+        else
+        {
+            this.map[x + (y * 30)].Remove("water");
+        }
+    }
+
+    int check_around(int x, int y, string type)
+    {
+        if (x >= 29 && y >= 29)
+        {
+            if (this.map[x + (y * 30) - 1].ContainsKey(type) || this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return 899;
+            }
+            else
+                return -1;
+        }
+        else if (x <= 0 && y >= 29)
+        {
+            if (this.map[x + (y * 30) + 1].ContainsKey(type) || this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return 870;
+            }
+            else
+                return -1;
+        }
+        else if (x >= 29 && y <= 0)
+        {
+            if (this.map[x + (y * 30) - 1].ContainsKey(type) || this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return 29;
+            }
+            else
+                return -1;
+        }
+        else if (x <= 0 && y <= 0)
+        {
+            if (this.map[x + (y * 30) + 1].ContainsKey(type) || this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return 0;
+            }
+            else
+                return -1;
+        }
+        else if (x >= 29)
+        {
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
+            {
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
+            }
+            else
+                return -1;
+        }
+        else if (y >= 29)
+        {
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
+            {
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 1].ContainsKey(type))
+            {
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
+            }
+            else
+                return -1;
+        }
+        else if (x <= 0)
+        {
+            if (this.map[x + (y * 30) + 1].ContainsKey(type))
+            {
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
+            }
+            else if (this.map[x + (y * 30) - 30].ContainsKey(type))
+            {
+                return (x + (y * 30) - 30);
+            }
+            else
+                return -1;
+        }
+        else if (y <= 0)
+        {
+            if (this.map[x + (y * 30) - 1].ContainsKey(type))
+            {
+                return (x + (y * 30) - 1);
+            }
+            else if (this.map[x + (y * 30) + 1].ContainsKey(type))
+            {
+                return (x + (y * 30) + 1);
+            }
+            else if (this.map[x + (y * 30) + 30].ContainsKey(type))
+            {
+                return (x + (y * 30) + 30);
+            }
+            else
+                return -1;
+        }
+        else
+            return -1;
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571d66467da7b8b4b84e981e3112ffa2, type: 3}
+  m_Name: house_lv1
+  m_EditorClassIdentifier: 
+  Inherence: house_lv1
+  BuildDataName: "\uC8FC\uAC70\uC2DC\uC124_LV1"
+  BuildDataDes: "\uC0AC\uB78C\uB4E4\uC774 \uC0B4 \uC218 \uC788\uB3C4\uB85D \uC9C0\uC5B4\uC9C4
+    \uC2DC\uC124\n\uC8FC\uBCC0\uC5D0 \uB3C4\uB85C\uAC00 \uC788\uC5B4\uC57C \uD55C\uB2E4.\n"
+  BuildDataSprite: {fileID: 0}

@@ -15,9 +15,12 @@ public class UIManager : MonoBehaviour
     private bool isOn;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        build_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+        road_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+        shop_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+        production_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
     }
 
     // Update is called once per frame
@@ -34,8 +37,10 @@ public class UIManager : MonoBehaviour
         {
             if(!isOn)
             {
-                build_panel.localPosition = new Vector2(0, -Screen.height);
-                build_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo().delay = 0.1f;
+                build_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo();
+                road_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                shop_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                production_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
                 isOn = true;
             }
             else
@@ -50,8 +55,10 @@ public class UIManager : MonoBehaviour
         {
             if (!isOn)
             {
-                road_panel.localPosition = new Vector2(0, -Screen.height);
-                road_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo().delay = 0.1f;
+                road_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo();
+                build_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                shop_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                production_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
                 isOn = true;
             }
             else
@@ -64,8 +71,10 @@ public class UIManager : MonoBehaviour
         {
             if (!isOn)
             {
-                shop_panel.localPosition = new Vector2(0, -Screen.height);
-                shop_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo().delay = 0.1f;
+                shop_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo();
+                build_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                road_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                production_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
                 isOn = true;
             }
             else
@@ -78,8 +87,10 @@ public class UIManager : MonoBehaviour
         {
             if (!isOn)
             {
-                production_panel.localPosition = new Vector2(0, -Screen.height);
-                production_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo().delay = 0.1f;
+                production_panel.LeanMoveLocalY(-360, 0.5f).setEaseOutExpo();
+                build_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                road_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
+                shop_panel.LeanMoveLocalY(-590, 0.5f).setEaseInExpo();
                 isOn = true;
             }
             else

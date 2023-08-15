@@ -17,6 +17,9 @@ public class MoneyManager : MonoBehaviour
     int rn_per;     //랜덤 퍼센트 상수
 
     private float time = 0f;    //시간
+    private int day = 0;    //날짜
+    private int clock = 0;  //시
+    private int minute = 0; //분
     private float coin_time = 0f;    //코인 시간
 
     List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사",
@@ -38,11 +41,11 @@ public class MoneyManager : MonoBehaviour
 
     coin[] coins = new coin[]
     {
-        new coin(5000,0,"없"),
-        new coin(5000,0,"없"),
-        new coin(5000,0,"없"),
-        new coin(5000,0,"없"),
-        new coin(5000,0,"없")
+        new coin(5000,0,"무아"),
+        new coin(5000,0,"제문"),
+        new coin(5000,0,"다업"),
+        new coin(5000,0,"나존"),
+        new coin(5000,0,"존나")
     };
 
     void Start()
@@ -60,7 +63,12 @@ public class MoneyManager : MonoBehaviour
     {
         time += Time.deltaTime;
         coin_time += Time.deltaTime;
-        time_text.text = "Time : " + Mathf.Ceil(time).ToString();
+
+        minute = (int)time % 60;
+        clock = ((int)time / 60)%24;
+        day = (int)time / 60 / 24;
+
+        time_text.text = "Time : " + day.ToString() + "일 " + clock.ToString() + "시 " + minute.ToString() + "분";
 
         if (coin_time > 10.0f)
         {
@@ -136,10 +144,12 @@ public class MoneyManager : MonoBehaviour
 
     public void change_coin(int coin_num)   //이름을 랜덤으로 리셋
     {
+        string tmp = coins[coin_num].coin_name;
         int tmp_name = Random.Range(0, coin_name_list.Count);
         coins[coin_num].coin_name = coin_name_list[tmp_name];
         coin_name_text[coin_num].text = coins[coin_num].coin_name;
         coin_name_list.RemoveAt(tmp_name);
+        coin_name_list.Add(tmp);
     }
 
     public void buy_building(string building_name)  //빌딩 사는 것

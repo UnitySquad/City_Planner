@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
+    public Camera camera;
+
     public Transform build_panel;
     public Transform road_panel;
     public Transform shop_panel;
@@ -73,12 +75,14 @@ public class UIManager : MonoBehaviour
                 roadisOn = false;
                 shopisOn = false;
                 prdouctionisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = false;
             }
             else
             {
                 build_panel.LeanMoveLocalY(-655, 0.5f).setEaseInExpo();
                 movebutton_off();
                 buildisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = true;
             }
             
             
@@ -97,12 +101,14 @@ public class UIManager : MonoBehaviour
                 roadisOn = true;
                 shopisOn = false;
                 prdouctionisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = false;
             }
             else
             {
                 road_panel.LeanMoveLocalY(-655, 0.5f).setEaseInExpo();
                 movebutton_off();
                 roadisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = true;
             }
         }
         else if(clickObject.name == "ShopButton")
@@ -119,12 +125,14 @@ public class UIManager : MonoBehaviour
                 roadisOn = false;
                 shopisOn = true;
                 prdouctionisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = false;
             }
             else
             {
                 shop_panel.LeanMoveLocalY(-655, 0.5f).setEaseInExpo();
                 movebutton_off();
                 shopisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = true;
             }
         }
         else if(clickObject.name == "ProductionButton")
@@ -141,12 +149,14 @@ public class UIManager : MonoBehaviour
                 roadisOn = false;
                 shopisOn = false;
                 prdouctionisOn = true;
+                camera.gameObject.GetComponent<CameraControl>().enabled = false;
             }
             else
             {
                 production_panel.LeanMoveLocalY(-655, 0.5f).setEaseInExpo();
                 movebutton_off();
                 prdouctionisOn = false;
+                camera.gameObject.GetComponent<CameraControl>().enabled = true;
             }
         }
     }

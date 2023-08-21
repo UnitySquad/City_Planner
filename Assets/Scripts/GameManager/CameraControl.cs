@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
     private Vector3 Difference;
     private Vector3 ResetCamera;
 
-    private bool drag = false;
+    public bool drag = false;
 
     public float movementSpeed;
     public float movementTime;

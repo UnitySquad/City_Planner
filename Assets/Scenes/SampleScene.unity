@@ -707,6 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043a5415730b9c846aebb47081aa5716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 963194227}
   build_panel: {fileID: 1369497128}
   road_panel: {fileID: 1455319685}
   shop_panel: {fileID: 2127852917}
@@ -1222,7 +1223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &360161981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3206,7 +3207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 2046877765}
   m_Horizontal: 1
-  m_Vertical: 1
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -3488,7 +3489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &834237002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4373,6 +4374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f7ab25fd6542a4b8543f4ac8bc6df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drag: 0
   movementSpeed: 0.2
   movementTime: 5
   newPosition: {x: -148, y: 25, z: 31}
@@ -6922,7 +6924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1455319685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7724,6 +7726,8 @@ GameObject:
   - component: {fileID: 1747510006}
   - component: {fileID: 1747510008}
   - component: {fileID: 1747510007}
+  - component: {fileID: 1747510010}
+  - component: {fileID: 1747510009}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -7749,7 +7753,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747510007
 MonoBehaviour:
@@ -7789,6 +7793,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747510005}
   m_CullTransparentMesh: 1
+--- !u!61 &1747510009
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747510005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1747510010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747510005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2693efff0b777f64ab509b3ddff47f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolTips: {fileID: 1903952648}
+  buildData: {fileID: 11400000, guid: 8daa45bb1e2763f40ba0b167baf149a5, type: 2}
 --- !u!1 &1801710312
 GameObject:
   m_ObjectHideFlags: 0
@@ -8528,8 +8572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupCanvasObject: {fileID: 1903952646}
   popupObject: {fileID: 1065006171}
-  offset: {x: 0, y: -50, z: 0}
-  padding: -150
+  offset: {x: 0, y: 150, z: 0}
+  padding: 150
   nameText: {fileID: 764013165}
   detailText: {fileID: 323659812}
 --- !u!114 &1903952649
@@ -8561,10 +8605,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1980, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9100,7 +9144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2127852917
 RectTransform:
   m_ObjectHideFlags: 0

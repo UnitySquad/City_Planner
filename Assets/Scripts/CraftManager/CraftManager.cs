@@ -24,13 +24,26 @@ public class CraftManager : MonoBehaviour
 
     void add_bulding(int x, int y, string building_type, string building_name)
     {
-        if (this.map[x + (y * 30)].ContainsKey("road") && building_type == "building")
+        if (this.map[x + (y * 30)].ContainsKey("road") || this.map[x + (y * 30)].ContainsKey("building") && building_type == "building")
         {
             return;
         }
         if (x <= opened_map_size && y <= opened_map_size)
         {
+            if(building_name == "water_station_lv1")
+            {
+                this.map[x + (y * 30)].Add("water", "5");
+            }
+            else if (building_name == "water_station_lv2")
+            {
+                this.map[x + (y * 30)].Add("water", "10");
+            }
+            else if (building_name == "water_station_lv3")
+            {
+                this.map[x + (y * 30)].Add("water", "15");
+            }
             this.map[x + (y * 30)].Add(building_type, building_name);
+            update_state(x, y);
         }
         else
         {
@@ -175,6 +188,7 @@ public class CraftManager : MonoBehaviour
 
     int check_around(int x, int y, string type)
     {
+        int result;
         if (x >= 29 && y >= 29)
         {
             if (this.map[x + (y * 30) - 1].ContainsKey(type) || this.map[x + (y * 30) - 30].ContainsKey(type))

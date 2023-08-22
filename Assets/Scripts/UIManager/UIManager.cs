@@ -16,11 +16,14 @@ public class UIManager : MonoBehaviour
     public Transform road_button;
     public Transform shop_button;
     public Transform production_button;
+    
+    public GameObject coincanvas;
 
     private bool buildisOn;
     private bool roadisOn;
     private bool shopisOn;
     private bool prdouctionisOn;
+    private bool stockisOn;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,6 +43,21 @@ public class UIManager : MonoBehaviour
     {
         
     }
+
+    public void stock_onoff()
+    {
+        if(!stockisOn)
+        {
+            coincanvas.SetActive(true);
+            stockisOn = true;
+        }
+        else
+        {
+            coincanvas.SetActive(false);
+            stockisOn = false;
+        }
+    }
+
 
     public void movebutton_on()
     {

@@ -22,6 +22,8 @@ public class MoneyManager : MonoBehaviour
     private int minute = 0; //분
     private float coin_time = 0f;    //코인 시간
 
+    public GameObject sun; //태양
+
     List<string> coin_name_list = new List<string>() { "루나", "도지", "솔라", "시바", "비트", "정기", "나토", "나사",
     "바보","석류","레드","블루","그린","육성","오성","사성","이성","일성","리얼","폭스","래빗"};
 
@@ -61,8 +63,9 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        coin_time += Time.deltaTime;
+        time += Time.deltaTime*2;
+        coin_time += Time.deltaTime*2;
+        sun.transform.Rotate(new Vector3(0.5f, 0, 0) * Time.deltaTime);
 
         minute = (int)time % 60;
         clock = ((int)time / 60)%24;

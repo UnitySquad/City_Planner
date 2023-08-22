@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: sell_coin
         m_Mode: 3
@@ -727,14 +727,13 @@ GameObject:
   - component: {fileID: 206893655}
   - component: {fileID: 206893658}
   - component: {fileID: 206893657}
-  - component: {fileID: 206893656}
   m_Layer: 5
   m_Name: coin_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &206893655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -787,44 +786,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 1500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &206893656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206893654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccebd8147dbfeb42a7a140d1d540bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money_text: {fileID: 1564925456}
-  coin_name_text:
-  - {fileID: 2127211756}
-  - {fileID: 1024032463}
-  - {fileID: 1421911085}
-  - {fileID: 1532551877}
-  - {fileID: 292179285}
-  coin_value_text:
-  - {fileID: 1856131331}
-  - {fileID: 1285266401}
-  - {fileID: 1567217510}
-  - {fileID: 1828844219}
-  - {fileID: 2040225799}
-  coin_per_text:
-  - {fileID: 284469160}
-  - {fileID: 1397097960}
-  - {fileID: 1878508344}
-  - {fileID: 60643953}
-  - {fileID: 838750706}
-  coin_count_text:
-  - {fileID: 1450008384}
-  - {fileID: 1431621919}
-  - {fileID: 545365686}
-  - {fileID: 2110935214}
-  - {fileID: 1602983465}
-  time_text: {fileID: 1022138860}
 --- !u!114 &206893657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,13 +996,14 @@ GameObject:
   - component: {fileID: 323249652}
   - component: {fileID: 323249651}
   - component: {fileID: 323249650}
+  - component: {fileID: 323249653}
   m_Layer: 0
   m_Name: CoinCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &323249649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1124,6 +1086,45 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &323249653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323249648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccebd8147dbfeb42a7a140d1d540bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money_text: {fileID: 1564925456}
+  coin_name_text:
+  - {fileID: 2127211756}
+  - {fileID: 1024032463}
+  - {fileID: 1421911085}
+  - {fileID: 1532551877}
+  - {fileID: 292179285}
+  coin_value_text:
+  - {fileID: 1856131331}
+  - {fileID: 1285266401}
+  - {fileID: 1567217510}
+  - {fileID: 1828844219}
+  - {fileID: 2040225799}
+  coin_per_text:
+  - {fileID: 284469160}
+  - {fileID: 1397097960}
+  - {fileID: 1878508344}
+  - {fileID: 60643953}
+  - {fileID: 838750706}
+  coin_count_text:
+  - {fileID: 1450008384}
+  - {fileID: 1431621919}
+  - {fileID: 545365686}
+  - {fileID: 2110935214}
+  - {fileID: 1602983465}
+  time_text: {fileID: 1022138860}
+  sun: {fileID: 705507993}
 --- !u!1 &323659810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: sell_coin
         m_Mode: 3
@@ -2775,7 +2776,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: buy_coin
         m_Mode: 3
@@ -3421,7 +3422,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: buy_coin
         m_Mode: 3
@@ -3732,7 +3733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: sell_coin
         m_Mode: 3
@@ -3866,7 +3867,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: buy_coin
         m_Mode: 3
@@ -5051,7 +5052,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: random_coin
         m_Mode: 1
@@ -5589,7 +5590,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: sell_coin
         m_Mode: 3
@@ -5723,7 +5724,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: sell_coin
         m_Mode: 3
@@ -6701,7 +6702,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: buy_coin
         m_Mode: 3
@@ -7917,7 +7918,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206893656}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
         m_MethodName: buy_coin
         m_Mode: 3

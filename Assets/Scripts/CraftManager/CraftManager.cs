@@ -30,6 +30,45 @@ public class CraftManager : MonoBehaviour
         }
         if (x <= opened_map_size && y <= opened_map_size)
         {
+            if (building_name == "water_station_lv1" || building_name == "water_station_lv2" || building_name == "water_station_lv3")
+            {
+                if (x <= opened_map_size - 1 && y <= opened_map_size - 1)
+                {
+                    int cnt = 0;
+                    if (this.map[x + (y * 30)]["tile"] == "water")
+                    {
+                        cnt++;
+                    }
+                    if (this.map[x + 1 + (y * 30)]["tile"] == "water")
+                    {
+                        cnt++;
+                    }
+                    if (this.map[x + ((y + 1) * 30)]["tile"] == "water")
+                    {
+                        cnt++;
+                    }
+                    if (this.map[x + 1 + ((y + 1) * 30)]["tile"] == "water")
+                    {
+                        cnt++;
+                    }
+                    if (cnt != 2)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (building_name == "electric_station_lv1" || building_name == "electric_station_lv2" || building_name == "electric_station_lv3")
+            {
+                if (x > opened_map_size - 1 && y > opened_map_size - 1)
+                {
+                    return;
+                }
+
             if (building_name == "water_station_lv1")
             {
                 this.map[x + (y * 30)].Add("water", "5");

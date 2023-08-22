@@ -30,18 +30,47 @@ public class CraftManager : MonoBehaviour
         }
         if (x <= opened_map_size && y <= opened_map_size)
         {
-            if(building_name == "water_station_lv1")
+            if (building_name == "water_station_lv1")
             {
                 this.map[x + (y * 30)].Add("water", "5");
             }
             else if (building_name == "water_station_lv2")
             {
-                this.map[x + (y * 30)].Add("water", "10");
+                this.map[x + (y * 30)].Add("water", "7");
             }
             else if (building_name == "water_station_lv3")
             {
-                this.map[x + (y * 30)].Add("water", "15");
+                this.map[x + (y * 30)].Add("water", "10");
             }
+            else if (building_name == "wind_station_lv1")
+            {
+                this.map[x + (y * 30)].Add("electric", "5");
+            }
+
+            else if (building_name == "water_tower")
+            {
+                if (this.map[x + (y * 30)]["water"] == "0")
+                {
+                    return;
+                }
+                else
+                {
+                    this.map[x + (y * 30)]["water"] += 5;
+                }
+            }
+
+            else if (building_name == "electric_tower")
+            {
+                if (this.map[x + (y * 30)]["electric"] == "0")
+                {
+                    return;
+                }
+                else
+                {
+                    this.map[x + (y * 30)]["electric"] += 5;
+                }
+            }
+
             this.map[x + (y * 30)].Add(building_type, building_name);
             update_state(x, y);
         }
@@ -56,6 +85,7 @@ public class CraftManager : MonoBehaviour
         if (x <= opened_map_size && y <= opened_map_size)
         {
             this.map[x + (y * 30)].Remove(building_type);
+            update_state(x, y);
         }
         else
         {
@@ -99,6 +129,18 @@ public class CraftManager : MonoBehaviour
         {
             remove_bulding(x, y, "building");
             add_bulding(x, y, "building", "factory_lv3");
+        }
+
+        // upgrade shop
+        else if (this.map[x + (y * 30)].ContainsValue("shop_lv1"))
+        {
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "shop_lv2");
+        }
+        else if (this.map[x + (y * 30)].ContainsValue("shop_lv2"))
+        {
+            remove_bulding(x, y, "building");
+            add_bulding(x, y, "building", "shop_lv3");
         }
 
         // upgrade nothing
@@ -168,7 +210,7 @@ public class CraftManager : MonoBehaviour
         // check electric
         if ((tmp = check_around(x, y, "elctric")) != -1)
         {
-            this.map[x + (y * 30)].Add("electric", this.map[tmp]["electric"] + 1);
+            this.map[x + (y * 30)].Add("electric", this.map[tmp]["electric"] - 1);
         }
         else
         {
@@ -178,7 +220,7 @@ public class CraftManager : MonoBehaviour
         // check water
         if ((tmp = check_around(x, y, "water")) != -1)
         {
-            this.map[x + (y * 30)].Add("water", this.map[tmp]["water"] + 1);
+            this.map[x + (y * 30)].Add("water", this.map[tmp]["water"] - 1);
         }
         else
         {
